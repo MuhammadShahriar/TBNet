@@ -1,0 +1,81 @@
+<html> 
+    <head> 
+        <title>TBNet</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction : column;
+                align-items : center;
+            }
+            h1 {
+                color: blue;
+            }
+
+            .images {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .images > img {
+                margin : 10px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            label {
+                font-size: 20px;
+                font-weight: 600;
+                margin: 10px;
+            }
+
+            input {
+                margin: 10px;
+            }
+
+            h2 {
+                font-size: 50px;
+            }
+
+            span {
+                font-weight: 600;
+                color: rgb(102, 0, 0);
+            }
+
+            .red {
+                color: red;
+            }
+
+            .green {
+                color: green;
+            }
+        </style>
+    </head> 
+    
+    <body> 
+        <h1>TBNet: Detect Tuberculosis Using X-ray Image</h1> 
+        <form method="POST" enctype="multipart/form-data">
+            
+            <label for="file">Upload X-ray Image:</label>
+            <input type="file" name="file">
+            <input type="submit" value="Test X-ray Image"> 
+        </form>
+
+
+        <h2><span>Result :</span> {{result.result}}</h2>
+        <div class="images">
+            <img hight="250px" width="250px" src="static/{{result.image}}">
+            <img hight="250px" width="250px" src="static/{{result.mask}}">
+            <img hight="250px" width="250px" src="static/{{result.lung}}">
+        </div>
+
+        <script>
+            var h2 = document.querySelector('h2');
+            if ( h2.innerText === "Result : Tuberculosis" ) {
+                h2.classList.add('red');
+            }
+            else h2.classList.add('green');
+        </script>
+    </body> 
+</html> 
